@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FastAPI App</title>
+</head>
+<style>
+    button{
+        padding: 10px;
+        background-color: bisque;
+        border-radius: 25px;
+    }
+</style>
+<body>
+  <h1>testing app</h1>
+  <h5>upload pdf for parsing</h5>
+  <input type="file" name="" id="fileinput" style="padding: 5px 5px 30px ;">
+  <div><button onclick="parse_pdf()">SHOW REQUIREMENTS</button></div>
+</body>
+<script>
+    async function parse_pdf(){
+        let file_input = document.getElementById("fileinput");
+        if (file_input.files.length === 0){
+            alert("Please select a file for extraction");
+            return;
+        }
+        const file = file_input.files[0];   //get specific data from index zero
+        const form_data = new FormData();   //wrappig data into formdata object
+        form_data.append("file", file);
+
+        //  try to send POST request to fast API
+        try{
+            const file_response = await fetch("/filtered-data",{
+                method: "POST",
+                body: form_data
+            });
+            const response_result = await file_response.json();
+            console.log(response_result);
+        }catch (error) {
+        console.error("Error uploading file:", error);
+    }        
+
+    }
+</script>
+</html>

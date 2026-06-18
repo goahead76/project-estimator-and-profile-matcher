@@ -1,0 +1,20 @@
+python 3.12 is suitable version for this project - [winget install --id Python.Python.3.12 -e]
+
+install fastAPI by - pip install fastapi[standard]
+
+install sqlalchemy pymysql cryptography
+
+sqlalchemy: The standard toolkit and ORM used to write Python code that interacts with your database.
+pymysql: The driver that allows Python and SQLAlchemy to speak directly to MySQL.
+cryptography: Required by PyMySQL to securely handle newer MySQL authentication methods.
+
+pip install ___________ (this requirements)
+
+fastapi[standard]: Builds the web server, creates the API endpoints, and hosts your application.
+python-multipart: Allows your backend API to receive file uploads from a web browser.
+pypdf: Extracts the raw text out of uploaded 15–20 page PDF documents.
+pandas: Parses CSV files and structures your Kaggle developer dataset into manageable tables.
+scikit-learn: Matches project requirements to developer skills using text similarity algorithms.
+kaggle: Connects to the Kaggle API to download and update your developer profiles.
+langchain-openai: Connects to GPT models to analyze requirements and calculate time and cost estimates.
+
