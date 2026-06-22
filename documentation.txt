@@ -18,3 +18,7 @@ scikit-learn: Matches project requirements to developer skills using text simila
 kaggle: Connects to the Kaggle API to download and update your developer profiles.
 langchain-openai: Connects to GPT models to analyze requirements and calculate time and cost estimates.
 
+
+Invoke-WebRequest -Uri "https://cloudflare.com" -OutFile "static/chart.umd.js"
+import this for chart.js dependencies
+
