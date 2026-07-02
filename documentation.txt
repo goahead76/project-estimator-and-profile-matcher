@@ -20,5 +20,7 @@ langchain-openai: Connects to GPT models to analyze requirements and calculate t
 
 
 Invoke-WebRequest -Uri "https://cloudflare.com" -OutFile "static/chart.umd.js"
-import this for chart.js dependencies
+import this for chart.js dependencies -------------------------------------------------scripting is blocked for security reasons so we have use matplotlib instead of chart.js
+
+ pip install matplotlib
 
