@@ -1,88 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Profile Matcher Analytics</title>
-    <!-- Tailwind CSS Engine for Dashboard layouts -->
-    <link rel="stylesheet" href="/static/tailwind.css">
+    <!-- Load custom structural styling matrix file -->
+    <link rel="stylesheet" href="/static/css/analytics.css">
     <!-- Load localized runtime script asset -->
-    <script src="/static/script_analytics.js" ></script>
+    <script src="/static/scripts/script_analytics.js" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans min-h-screen pb-12">
+
+<body class="analytics-body">
 
     <!-- Header Navigation Bar -->
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <a href="/" class="text-sm font-medium text-gray-500 hover:text-blue-600 transition">← Back to Parser</a>
-                <span class="text-gray-300">|</span>
-                <h1 class="text-xl font-bold text-emerald-600 flex items-center gap-2">
-                    🚀 Developer Match Matrix
-                </h1>
+    <header class="analytics-header">
+        <div class="header-container">
+            <div class="navigation-group">
+                <a href="/" class="back-link">← Back to Parser</a>
+                <span class="divider-line">|</span>
+                <h1 class="header-logo">🚀 Developer Match Matrix</h1>
             </div>
-            <div id="active-doc-tag" class="text-sm bg-gray-100 border border-gray-200 px-3 py-1 rounded-md text-gray-600 font-medium hidden"></div>
+            <div id="active-doc-tag" class="file-status-label hidden"></div>
         </div>
     </header>
 
     <!-- Main Workspace Grid Containers -->
-    <main class="max-w-7xl mx-auto px-4 mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
+    <main class="workspace-grid">
+
         <!-- Left Side Column: Candidate Rankings Profile Cards -->
-        <section class="lg:col-span-1 space-y-6">
-            <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-lg font-bold text-gray-700">Top Profile Matches</h2>
-                    <span id="pool-count-badge" class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-0.5 rounded-full">0 Found</span>
+        <section class="rankings-column">
+            <div class="rankings-main-card">
+                <div class="rankings-card-header">
+                    <h2 class="rankings-header-title">Top Profile Matches</h2>
+                    <span id="pool-count-badge" class="pool-count-badge">0 Found</span>
                 </div>
-                
+
                 <!-- Target Container for Dynamic Profile Cards Insertion -->
-                <div id="developer-cards-container" class="space-y-4 max-h-[850px] overflow-y-auto pr-1">
+                <div id="developer-cards-container" class="profile-cards-scroller">
                     <!-- Placeholder View for empty states -->
-                    <div class="text-center py-12 text-gray-400">
-                        <p class="text-4xl mb-2">👥</p>
-                        <p class="text-sm">No profile metrics found.</p>
+                    <div class="placeholder-view-box">
+                        <p class="placeholder-icon">👥</p>
+                        <p class="placeholder-text">No profile metrics found.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Right Side Column: 5-Channel Analytics Visual Data Stream -->
-        <section class="lg:col-span-2 space-y-6">
-            <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <h2 class="text-lg font-bold text-gray-700 border-b pb-3 mb-6">Talent Requirement Report Matrices</h2>
-                
-                <!-- 5-Channel Visual Data Graphic Array Grid Structure -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    
+        <!-- Right Side Column: 8-Channel Analytics Visual Data Stream -->
+        <section class="analytics-column">
+            <div class="analytics-main-card">
+                <h2 class="panel-section-title">Talent Requirement Report Matrices</h2>
+
+                <!-- 8-Channel Visual Data Graphic Array Grid Structure -->
+                <div class="charts-matrix-grid">
+
                     <!-- Graph 1 Slot: Top Match Bar Chart -->
-                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 space-y-2">
-                        <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wide">1. Profile Alignment Ratio</h4>
-                        <img id="matchImgTop" src="" alt="Top Matches Analysis" class="w-full h-auto bg-white rounded shadow-sm border border-gray-200 hidden">
+                    <div class="chart-slot-box">
+                        <h4 class="chart-slot-title">1. Profile Alignment Ratio</h4>
+                        <img id="matchImgTop" src="" alt="Top Matches Analysis" class="matrix-chart-image hidden">
                     </div>
 
                     <!-- Graph 2 Slot: Skill Deficit Chart -->
-                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 space-y-2">
-                        <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wide">2. Missing Resource Deficits</h4>
-                        <img id="matchImgScarcity" src="" alt="Resource Deficit Vector" class="w-full h-auto bg-white rounded shadow-sm border border-gray-200 hidden">
+                    <div class="chart-slot-box">
+                        <h4 class="chart-slot-title">2. Missing Resource Deficits</h4>
+                        <img id="matchImgScarcity" src="" alt="Resource Deficit Vector" class="matrix-chart-image hidden">
                     </div>
 
                     <!-- Graph 3 Slot: Scatter Value Chart -->
-                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 space-y-2">
-                        <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wide">3. Talent Efficiency Matrix</h4>
-                        <img id="matchImgBudget" src="" alt="Budget vs Fit Evaluation" class="w-full h-auto bg-white rounded shadow-sm border border-gray-200 hidden">
+                    <div class="chart-slot-box">
+                        <h4 class="chart-slot-title">3. Talent Efficiency Matrix</h4>
+                        <img id="matchImgBudget" src="" alt="Budget vs Fit Evaluation" class="matrix-chart-image hidden">
                     </div>
 
                     <!-- Graph 4 Slot: Pool Segmentation Donut -->
-                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 space-y-2">
-                        <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wide">4. Availability Segment Balance</h4>
-                        <img id="matchImgAvailability" src="" alt="Pool Segment Distributions" class="w-full h-auto bg-white rounded shadow-sm border border-gray-200 hidden">
+                    <div class="chart-slot-box">
+                        <h4 class="chart-slot-title">4. Availability Segment Balance</h4>
+                        <img id="matchImgAvailability" src="" alt="Pool Segment Distributions" class="matrix-chart-image hidden">
                     </div>
 
-                    <!-- Graph 5 Slot: Seniority Curve Graph (Full Width span) -->
-                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 space-y-2 md:col-span-2">
-                        <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wide">5. Experience Seniority Curve</h4>
-                        <img id="matchImgExperience" src="" alt="Experience Seniority Curve Profile" class="w-full h-auto bg-white rounded shadow-sm border border-gray-200 hidden">
+                    <!-- Graph 5 Slot: Experience Seniority Curve (Full Width span) -->
+                    <div class="chart-slot-box full-width-slot">
+                        <h4 class="chart-slot-title">5. Experience Seniority Curve</h4>
+                        <img id="matchImgExperience" src="" alt="Experience Seniority Curve Profile" class="matrix-chart-image hidden">
+                    </div>
+
+                    <!-- Graph 6 Slot: Competency Heatmap Matrix -->
+                    <div class="chart-slot-box">
+                        <h4 class="chart-slot-title">6. Target Competency Heatmap Matrix</h4>
+                        <img id="matchImgHeatmap" src="" alt="Competency Matrix Map" class="matrix-chart-image hidden">
+                    </div>
+
+                    <!-- NEW Graph 7 Slot: Value Leverage Index -->
+                    <div class="chart-slot-box">
+                        <h4 class="chart-slot-title">7. Value Leverage Index (ROI Quadrants)</h4>
+                        <img id="matchImgROI" src="" alt="Value Leverage Index ROI" class="matrix-chart-image hidden">
+                    </div>
+
+                    <!-- NEW Graph 8 Slot: Talent Versatility Metrics -->
+                    <div class="chart-slot-box full-width-slot">
+                        <h4 class="chart-slot-title">8. Talent Versatility Metrics</h4>
+                        <img id="matchImgBreadth" src="" alt="Skill Breadth Volume" class="matrix-chart-image hidden">
                     </div>
 
                 </div>
@@ -92,4 +110,5 @@
     </main>
 
 </body>
+
 </html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReqMatch Matrix - PDF Document Analyzer</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <script src="/static/scripts/script_main.js" defer></script>
+</head>
+<body class="dashboard-body">
+
+    <!-- Header Navigation Bar -->
+    <header class="dashboard-header">
+        <div class="header-container">
+            <h1 class="header-logo">📄 Req-Match Matrix Dashboard</h1>
+            <div id="file-status" class="file-status-label hidden"></div>
+        </div>
+    </header>
+
+    <!-- Main Content Container Grid -->
+    <main class="workspace-grid">
+
+        <!-- Left Column: Controls & Configuration Only -->
+        <section class="controls-column">
+            
+            <!-- Document Configuration Panel Card -->
+            <div class="configuration-card">
+                <h2 class="card-title">Upload & Configure</h2>
+                
+                <form id="upload-form" class="upload-form">
+                    <div class="form-group">
+                        <label class="form-label">Select PDF Document</label>
+                        <input type="file" id="pdf-file" accept=".pdf" required class="file-input-field">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Custom Keywords (Optional)</label>
+                        <span class="form-helper-text">Separate multiple items with commas</span>
+                        <input type="text" id="keywords" placeholder="e.g. machine learning, remote, urgent" class="text-input-field">
+                    </div>
+                    
+                    <button type="submit" id="submit-btn" class="primary-submit-button">
+                        Analyze Document
+                    </button>
+                </form>
+
+                <!-- Navigation link routing block for talent match analytics workspace -->
+                <div class="navigation-action-block">
+                    <a href="analytics.html" id="find-developer-btn" class="find-developer-button pointer-events-none opacity-50">
+                        👥 Find Suitable Developers
+                    </a>
+                    <p id="find-dev-tip" class="navigation-tip-text">
+                        Please upload and analyze a technical specification sheet first to unlock matching database vectors.
+                    </p>
+                </div>
+            </div>
+
+            <!-- UI Processing Loader Status -->
+            <div id="loader" class="processing-loader-card hidden">
+                <div class="spinner-ring"></div>
+                <p class="loader-text">Processing text and evaluating metrics...</p>
+            </div>
+
+            <!-- Analytics Charts Panel (Configured for 4 Matrix Graphs) -->
+            <div id="analytics-panel" class="analytics-charts-panel hidden">
+                <h2 class="panel-section-title">Document Data Reports Matrix</h2>
+                <div class="charts-matrix-grid">
+                    <div class="chart-slot-box"><img id="chartImgCategory" src="" alt="Category Mapping" class="matrix-chart-image hidden"></div>
+                    <div class="chart-slot-box"><img id="chartImgDensity" src="" alt="Keyword Distribution" class="matrix-chart-image hidden"></div>
+                    <div class="chart-slot-box"><img id="chartImgFootprint" src="" alt="Page Density Footprint" class="matrix-chart-image hidden"></div>
+                    <div class="chart-slot-box"><img id="chartImgComposition" src="" alt="Diversity Composition" class="matrix-chart-image hidden"></div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Right Column: Initial Explanatory Layout shifting to Live Requirements Feed -->
+        <section class="streams-column">
+            <div class="streams-main-card">
+                <div class="streams-card-header">
+                    <h2 class="streams-header-title">Project Requirements Stream</h2>
+                    <span id="match-badge" class="global-match-badge hidden">0 Matches</span>
+                </div>
+
+                <div class="streams-content-scroller">
+                    
+                                        
+                        <!-- MOVED: Platform Summary paragraph sitting on the right side initially -->
+                        <p class="platform-description">
+                            Our platform is an intelligent PDF Analysis and Talent Matching System that automates project scoping. 
+                            It uses advanced NLP to scan complex technical specification documents, filter out corporate noise, 
+                            and categorize core project constraints like Tech Stack and Timelines. It then crosses those data vectors 
+                            directly against a developer database to rank and visualize the best candidates using interactive 2D and 3D data matrices.
+                        </p>
+
+                         <!-- Unified Placeholder Container (Holds lens icon, title, and platform summary text) -->
+                    <div id="placeholder-view" class="placeholder-view-box">                        
+                        <h3 class="placeholder-main-text" style="margin-bottom: 1.5rem; font-size: 1.25rem;">
+                            <span class="placeholder-icon">🔍</span>No active report generated.</h3>
+                    </div>
+
+                    <!-- 1. CONSTRAINTS SECTION CONTAINER -->
+                    <div id="section-constraints" class="stream-section-wrapper hidden">
+                        <h3 class="stream-badge-title-header red-theme">
+                            ⚠️ Project Constraints & Rules <span class="section-counter-badge red-badge">0</span>
+                        </h3>
+                        <div class="container stream-cards-container-slot"></div>
+                    </div>
+
+                    <!-- 2. TECH STACK SECTION CONTAINER -->
+                    <div id="section-techstack" class="stream-section-wrapper hidden">
+                        <h3 class="stream-badge-title-header blue-theme">
+                            💻 Core Tech Stack Requirements <span class="section-counter-badge blue-badge">0</span>
+                        </h3>
+                        <div class="container stream-cards-container-slot"></div>
+                    </div>
+
+                    <!-- 3. TIMELINE SECTION CONTAINER -->
+                    <div id="section-timeline" class="stream-section-wrapper hidden">
+                        <h3 class="stream-badge-title-header green-theme">
+                            📅 Schedule & Milestone Timelines <span class="section-counter-badge green-badge">0</span>
+                        </h3>
+                        <div class="container stream-cards-container-slot"></div>
+                    </div>
+
+                    <!-- 4. OTHER / CUSTOM SEARCHES CONTAINER -->
+                    <div id="section-other" class="stream-section-wrapper hidden">
+                        <h3 class="stream-badge-title-header gray-theme">
+                            🔍 Custom Keywords & General Info <span class="section-counter-badge gray-badge">0</span>
+                        </h3>
+                        <div class="container stream-cards-container-slot"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>

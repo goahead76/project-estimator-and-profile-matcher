@@ -23,4 +23,9 @@ Invoke-WebRequest -Uri "https://cloudflare.com" -OutFile "static/chart.umd.js"
 import this for chart.js dependencies -------------------------------------------------scripting is blocked for security reasons so we have use matplotlib instead of chart.js
 
  pip install matplotlib
+ pip install "passlib[bcrypt]"  <-------------wasn't supporting this python version
+an incompatibility between the older passlib library and newer versions of the bcrypt library (version 4.0.0 or higher) in Python 3.12+.
+
+pip install "bcrypt==4.0.1" "passlib[bcrypt]"
+
 

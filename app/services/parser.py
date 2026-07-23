@@ -4,8 +4,7 @@ import pypdf
 import spacy
 import base64
 import matplotlib
-# Force Matplotlib to run in a headless background worker state
-matplotlib.use('Agg')
+matplotlib.use('Agg')               # Force Matplotlib to run in a headless background worker state
 import matplotlib.pyplot as plt
 
 # Initialize SpaCy pipeline layer
@@ -25,9 +24,7 @@ CONVERSATIONAL_FLUFF = [
     "all rights reserved", "confidential document", "click here to"
 ]
 
-# ==========================================
 # MATPLOTLIB ENGINE GRAPH GENERATORS
-# ==========================================
 def plot_category_chart(chart_metrics):
     categories = list(chart_metrics.keys())
     counts = list(chart_metrics.values())
@@ -136,12 +133,12 @@ def plot_composition_chart(chart_metrics):
     fig.patch.set_facecolor('#ffffff')
     wedges, texts, autotexts = ax.pie(sizes, labels=labels, autopct='%1.1f%%',
                                   startangle=90, colors=colors[:len(labels)],
-                                  textprops=dict(color="#374151", fontsize=8),
+                                  textprops=dict(color="#374151", fontsize=10),
                                   wedgeprops=dict(width=0.4, edgecolor='white', linewidth=2))
     for autotext in autotexts:
-        autotext.set_fontsize(8)
+        autotext.set_fontsize(10)
         autotext.set_weight('bold')
-        autotext.set_color('white')
+        autotext.set_color('black')
 
     plt.title('4. Context Diversity Composition Ratio', fontsize=10, fontweight='bold', pad=10, color='#374151')
     fig.tight_layout()
@@ -151,10 +148,7 @@ def plot_composition_chart(chart_metrics):
     buf.seek(0)
     return f"data:image/png;base64,{base64.b64encode(buf.read()).decode('utf-8')}"
 
-# ==========================================
 # CORE EXTRACTION PARSER AND NOISE FILTER
-# ==========================================
-
 async def extract_and_filter_pdf(pdf_file, custom_keywords: str = ""):
     pdf_bytes = await pdf_file.read()
     pdf_stream = io.BytesIO(pdf_bytes)
@@ -166,7 +160,7 @@ async def extract_and_filter_pdf(pdf_file, custom_keywords: str = ""):
     for page in pdf_reader.pages:
         text = page.extract_text()
         if text:
-            # 2. NOISE REDUCTION: Standardize whitespaces and strip out broken newline artifacts
+            # NOISE REDUCTION: Standardize whitespaces and strip out broken newline artifacts
             clean_text = re.sub(r'\s+', ' ', text).strip()
             extracted_text_pieces.append(clean_text)
             page_metrics.append(len(clean_text))
