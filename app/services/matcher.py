@@ -391,6 +391,7 @@ def match_developers_and_visualize(extracted_keywords, csv_path: str):
             "img_top_matches": img_top_matches,
             "img_skill_scarcity": img_skill_scarcity,
             "img_budget_fit": img_budget_fit,
+
             "img_pool_availability": img_pool_availability,
             "img_experience_density": img_experience_density,
             "img_competency_heatmap": img_competency_heatmap, # <-- ADDED
